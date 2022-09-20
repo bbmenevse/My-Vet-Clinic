@@ -21,12 +21,7 @@
 		<java.version>17</java.version>
 	</properties>
 
-	<dependencies>
-
-	</dependencies>
-
 	<build>
-		<pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -34,15 +29,16 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven.release.plugin</artifactId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
 				<configuration>
-							<goals>install</goals>
+					<goals>install</goals>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
-				<version>2.5.3</version> <!-- Versiyon eklenince yükleme gerçekleşti -->
 			</plugin>
 		</plugins>
-		</pluginManagement>
 	</build>
+
 	<scm>
 		<developerConnection>scm:git:git@github.com:bbmenevse/My-Vet-Clinic.git</developerConnection>
 	  <tag>HEAD</tag>
