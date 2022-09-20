@@ -14,7 +14,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>My-Vet-Clinic</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>My-Vet-Clinic</name>
 	<description>My-Vet-Clinic</description>
 	<properties>
@@ -22,6 +22,7 @@
 	</properties>
 
 	<build>
+		<pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -37,11 +38,12 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		</pluginManagement>
 	</build>
 
 	<scm>
 		<developerConnection>scm:git:git@github.com:bbmenevse/My-Vet-Clinic.git</developerConnection>
-	  <tag>HEAD</tag>
+	  <tag>My-Vet-Clinic-0.0.2</tag>
   </scm>
 
 </project>
