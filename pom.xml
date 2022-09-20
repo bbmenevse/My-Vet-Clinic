@@ -14,7 +14,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>My-Vet-Clinic</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>My-Vet-Clinic</name>
 	<description>My-Vet-Clinic</description>
 	<properties>
@@ -43,7 +43,7 @@
 
 	<scm>
 		<developerConnection>scm:git:git@github.com:bbmenevse/My-Vet-Clinic.git</developerConnection>
-	  <tag>My-Vet-Clinic-0.0.2</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 </project>
