@@ -12,6 +12,7 @@
     <artifactId>pet-clinic-data</artifactId>
 
     <properties>
+        <spring.boot.repackage.skip>true</spring.boot.repackage.skip> <!-- It works without this too gotta check later -->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
@@ -44,6 +45,7 @@
     </dependencies>
 
     <build>
+    <pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -60,6 +62,7 @@
                 </executions>
             </plugin>
         </plugins>
+    </pluginManagement>
     </build>
 
 
