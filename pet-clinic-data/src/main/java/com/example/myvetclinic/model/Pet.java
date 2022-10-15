@@ -1,8 +1,9 @@
 package com.example.myvetclinic.model;
 
 import java.time.LocalDate;
+import java.util.Base64;
 
-public class Pet {
+public class Pet extends BaseEntity {
 
     private PetType petType;
     private Owner owner;
