@@ -12,6 +12,8 @@ public class OwnerSericeMap extends AbstractMapService<Owner,Long> implements Cr
         return super.findAll();
     }
 
+
+
     @Override
     public void deleteById(Long id) {
         super.deleteById(id);
