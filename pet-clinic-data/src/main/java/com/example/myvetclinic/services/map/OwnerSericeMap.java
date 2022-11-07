@@ -2,17 +2,16 @@ package com.example.myvetclinic.services.map;
 
 import com.example.myvetclinic.model.Owner;
 import com.example.myvetclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
-
+@Service
 public class OwnerSericeMap extends AbstractMapService<Owner,Long> implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
         return super.findAll();
     }
-
-
 
     @Override
     public void deleteById(Long id) {
