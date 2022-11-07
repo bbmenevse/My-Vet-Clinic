@@ -1,7 +1,6 @@
 package com.example.myvetclinic.services.map;
 
 import com.example.myvetclinic.model.Vet;
-import com.example.myvetclinic.services.CrudService;
 import com.example.myvetclinic.services.VetService;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,7 @@ public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetSe
 
     @Override
     public Vet save(Vet object) {
-        return super.save(object.getId(),object);
+        return super.save(object);
     }
 
     @Override

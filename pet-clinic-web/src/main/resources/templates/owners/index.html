@@ -21,6 +21,7 @@
             <td th:text="${owner?.getId()}">1</td>
             <td th:text="${owner?.getFirstName()}">First Name</td>
             <td th:text="${owner?.lastName}">Last Name</td>
+            <!-- Soru işareti Safe navigation Operator, boş obje dönerse nullpointer hatası gelmesin diye kullanılıyor -->
         </tr>
         </tbody>
     </table>

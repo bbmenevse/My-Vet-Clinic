@@ -1,10 +1,12 @@
 package com.example.myvetclinic.services.map;
 
+import com.example.myvetclinic.model.BaseEntity;
+
 import java.util.*;
 
-public abstract class AbstractMapService<T, ID> {
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
-    protected Map<ID,T> map = new HashMap<>();
+    protected Map<Long,T> map = new HashMap<>();
 
     Set<T> findAll()
     {
@@ -16,9 +18,20 @@ public abstract class AbstractMapService<T, ID> {
         return map.get(id);
     }
 
-    T save(ID id,T object)
+    T save(T object)
     {
-        map.put(id,object);
+        if(object!=null)
+        {
+            if(object.getId()==null)
+            {
+                object.setId(getNextId());
+            }
+            map.put(object.getId(),object);
+        }
+        else
+        {
+            throw new RuntimeException("AbstractMapService Runtime Exception, object was null");
+        }
 
         return object;
     }
@@ -31,5 +44,18 @@ public abstract class AbstractMapService<T, ID> {
     void delete(T object)
     {
         map.entrySet().removeIf(entry -> entry.getValue().equals(object));
+    }
+
+    private long getNextId()
+    {
+        if(map.isEmpty())
+        {
+            return 1;
+        }
+        else
+        {
+            return Collections.max(map.keySet()) +1;
+        }
+
     }
 }
