@@ -1,5 +1,4 @@
 package com.example.myvetclinic.bootstrap;
-
 import com.example.myvetclinic.model.Owner;
 import com.example.myvetclinic.model.Vet;
 import com.example.myvetclinic.services.OwnerService;
