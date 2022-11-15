@@ -12,6 +12,7 @@ public class VetController {
 
     public VetController(VetService vetService)
     {
+        System.out.println("Vet Controller Called");
         this.vetService=vetService;
     }
     @RequestMapping({"/vets","/vets/index","/vets/index.html"})

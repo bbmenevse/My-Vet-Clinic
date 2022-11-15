@@ -10,7 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MyVetClinicApplication {
 	public static void main(String[] args) {
+		System.out.print(" Main application started");
 		SpringApplication.run(MyVetClinicApplication.class, args);
+
 	}
 
 }
