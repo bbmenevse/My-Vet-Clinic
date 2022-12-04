@@ -42,7 +42,7 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner2);
 
 
-        System.out.println("Loaded Owners....");
+        System.out.println("void run inside the DataLoader called...");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
