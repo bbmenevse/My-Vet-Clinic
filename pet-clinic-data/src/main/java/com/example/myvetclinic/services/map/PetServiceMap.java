@@ -28,22 +28,27 @@ public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetSe
     @Override
     public Pet save(Pet object)
     {
+        //Throw Exception if the object is null
         if(object==null)
         {
             throw new RuntimeException("Pet object is empty!");
         }
+        //Throw Exception if the object doesn't contain a Pet Type.
         if(object.getPetType()==null)
         {
             throw new RuntimeException("Pets must have a Type!");
         }
         else
+        //Try to save Object's Pettype first.
         {
                 petTypeService.save(object.getPetType()); //
         }
+        // If the Pet does not have a owner with name or surname, it will throw an error
         if(object.getOwner().getFirstName()==null && object.getOwner().getLastName()==null)
         {
             throw new RuntimeException("Pets must have an owner!");
         }
+        //If pet object does not have a name, then it will set it automatically
         if(object.getPetName()==null)
         {
             object.setPetName("No pet name specified!");
