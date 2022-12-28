@@ -1,9 +1,8 @@
 package com.example.myvetclinic.bootstrap;
-import com.example.myvetclinic.model.Owner;
-import com.example.myvetclinic.model.PetType;
-import com.example.myvetclinic.model.Vet;
+import com.example.myvetclinic.model.*;
 import com.example.myvetclinic.services.OwnerService;
 import com.example.myvetclinic.services.PetTypeService;
+import com.example.myvetclinic.services.SpecialitiesService;
 import com.example.myvetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,9 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService,VetService vetService, PetTypeService petTypeService)
+    private final SpecialitiesService specialitiesService;
+
+    public DataLoader(OwnerService ownerService,VetService vetService, PetTypeService petTypeService,SpecialitiesService specialitiesService)
     {
         System.out.println("Creating the component: DataLoader");
 
@@ -24,6 +25,8 @@ public class DataLoader implements CommandLineRunner {
         this.vetService=vetService;
 
         this.petTypeService=petTypeService;
+
+        this.specialitiesService=specialitiesService;
         /*
         ownerService = new OwnerSericeMap();
         vetService = new VetServiceMap();
@@ -32,9 +35,16 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        System.out.println("void run inside the DataLoader called...");
+
+        Speciality radiology=new Speciality();
+        radiology.setDescription("Radiology");
+        radiology = specialitiesService.save(radiology);
+
         PetType dog = new PetType();
         dog.setName("Doggo");
         dog = petTypeService.save(dog);
+
 
         PetType cat = new PetType();
         cat.setName("Cat");
@@ -61,18 +71,30 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner2);
 
-        System.out.println("void run inside the DataLoader called...");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Sam");
         vet1.setLastName("Axe");
+        vet1.getSpecialities().add(radiology);
 
         vetService.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Jessie");
         vet2.setLastName("Porter");
+        vet2.getSpecialities().add(radiology);
 
+        Pet pet = new Pet();
+        pet.setPetType(cat);
+        pet.setPetName("Dragon");
+
+        Pet pet2 = new Pet();
+        pet2.setPetType(new PetType());
+        pet2.setPetName("Draken");
+
+        System.out.println(" Pet petType; ");
+        System.out.println(pet.getPetType());
+        System.out.println(pet.getPetType().getId());
         vetService.save(vet2);
 
     }

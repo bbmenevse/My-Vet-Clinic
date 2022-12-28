@@ -3,6 +3,7 @@ package com.example.myvetclinic.services.map;
 import com.example.myvetclinic.model.Pet;
 import com.example.myvetclinic.services.PetService;
 import com.example.myvetclinic.services.PetTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -10,6 +11,12 @@ import java.util.Set;
 public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService {
 
     private PetTypeService petTypeService;
+
+    @Autowired
+    public PetServiceMap(PetTypeService petTypeService) {
+        this.petTypeService = petTypeService;
+    }
+
     @Override
     public Set<Pet> findAll() {
         return super.findAll();
@@ -36,12 +43,14 @@ public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetSe
         //Throw Exception if the object doesn't contain a Pet Type.
         if(object.getPetType()==null)
         {
-            throw new RuntimeException("Pets must have a Type!");
+            System.out.println("Pet type was null!");
+            return null;
+            //throw new RuntimeException("Pets must have a Type!");
         }
         else
         //Try to save Object's Pettype first.
         {
-                petTypeService.save(object.getPetType()); //
+            object.setPetType(petTypeService.save(object.getPetType()));
         }
         // If the Pet does not have a owner with name or surname, it will throw an error
         if(object.getOwner().getFirstName()==null && object.getOwner().getLastName()==null)

@@ -4,11 +4,10 @@ import com.example.myvetclinic.model.PetType;
 import com.example.myvetclinic.services.PetTypeService;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.Set;
 
 @Service
-public class PetTypeMapService extends AbstractMapService<PetType,Long> implements PetTypeService {
+public class PetTypeServiceMap extends AbstractMapService<PetType,Long> implements PetTypeService {
     @Override
     public Set<PetType> findAll() {
         return super.findAll();
@@ -23,10 +22,13 @@ public class PetTypeMapService extends AbstractMapService<PetType,Long> implemen
     @Override
     public PetType save(PetType object) {
 
+
         // Pettype Can not be null
         if(object==null)
         {
-            throw new RuntimeException("Pet type is null!");
+            System.out.println("Pet type is null!");
+            return null;
+            //throw new RuntimeException("Pet type is null!");
         }
         //Check if the given petType already exists and assign it to petType object
         PetType petType = findByName(object.getName());
@@ -64,10 +66,10 @@ public class PetTypeMapService extends AbstractMapService<PetType,Long> implemen
             throw new RuntimeException("No PetType was submitted!");
         }
         // If the pet type already exists in the list, return that pet type. Else, return null
-        PetType x = findAll().stream().filter(petType -> petType.getName().equals(name)).findFirst().orElse(null);
+        PetType petType_ = findAll().stream().filter(petType -> petType.getName().equals(name)).findFirst().orElse(null);
 //        System.out.println(name);
 //        System.out.println(x);
 //        System.out.println("****************************");
-        return x;
+        return petType_;
     }
 }
