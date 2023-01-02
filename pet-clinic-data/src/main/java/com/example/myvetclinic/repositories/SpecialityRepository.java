@@ -1,7 +1,8 @@
 package com.example.myvetclinic.repositories;
 
 import com.example.myvetclinic.model.Speciality;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SpecialityRepository extends CrudRepository<Speciality,Long> {
+
+public interface SpecialityRepository extends JpaRepository<Speciality,Long> {
 }
