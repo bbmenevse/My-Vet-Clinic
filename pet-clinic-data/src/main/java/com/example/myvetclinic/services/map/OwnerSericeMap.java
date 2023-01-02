@@ -1,10 +1,9 @@
 package com.example.myvetclinic.services.map;
 
 import com.example.myvetclinic.model.Owner;
-import com.example.myvetclinic.model.PetType;
 import com.example.myvetclinic.services.OwnerService;
 import com.example.myvetclinic.services.PetService;
-import com.example.myvetclinic.services.PetTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -13,11 +12,11 @@ public class OwnerSericeMap extends AbstractMapService<Owner,Long> implements Ow
 
 
     private final PetService petService;
-    private final PetTypeService petTypeService;
 
-    public OwnerSericeMap(PetService petService, PetTypeService petTypeService) {
+
+    @Autowired
+    public OwnerSericeMap(PetService petService) {
         this.petService = petService;
-        this.petTypeService = petTypeService;
     }
 
     @Override
@@ -38,33 +37,16 @@ public class OwnerSericeMap extends AbstractMapService<Owner,Long> implements Ow
     @Override
     public Owner save(Owner object) {
 
-        if(object!=null)
+        if(object==null)
         {
-            if(object.getPets()!=null)
-            {
-
-            }
+            throw new RuntimeException("Owner object can't be null!");
+        }
+        if(object.getPets()!=null)
+        {
+            // Is pet null, does it have a pet type or similar situations are checked on the relevant map classes.
+            object.getPets().forEach(pet->petService.save(pet));
         }
 
-        // Farklı bir yöntem implement ediyorum.
-        /*if(object!=null)
-        {
-            if(object.getPets()!=null)
-            {
-                object.getPets().forEach(pet->{
-                    if(pet.getPetType()!=null)
-                    {
-                        if(pet.getPetType().getId() ==null )
-                        {
-
-                        }
-                    }
-                    else {
-                        throw new RuntimeException("Pet type was not specified!");
-                    }
-                });
-            }
-        }*/
         return super.save(object);
     }
 
