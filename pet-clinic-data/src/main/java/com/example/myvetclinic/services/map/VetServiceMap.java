@@ -4,10 +4,12 @@ import com.example.myvetclinic.model.Vet;
 import com.example.myvetclinic.services.SpecialitiesService;
 import com.example.myvetclinic.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
+@Profile({"default","map"})
 public class VetServiceMap extends AbstractServiceMap<Vet,Long> implements VetService {
 
     private SpecialitiesService specialitiesService;

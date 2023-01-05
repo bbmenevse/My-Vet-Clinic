@@ -4,10 +4,12 @@ import com.example.myvetclinic.model.Owner;
 import com.example.myvetclinic.services.OwnerService;
 import com.example.myvetclinic.services.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
+@Profile({"default","map"})
 public class OwnerServiceMap extends AbstractServiceMap<Owner,Long> implements OwnerService {
 
 
