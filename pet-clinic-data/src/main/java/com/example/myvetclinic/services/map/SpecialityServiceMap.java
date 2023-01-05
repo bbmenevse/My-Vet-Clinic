@@ -1,14 +1,13 @@
 package com.example.myvetclinic.services.map;
 
 import com.example.myvetclinic.model.Speciality;
-import com.example.myvetclinic.model.Vet;
 import com.example.myvetclinic.services.SpecialitiesService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class SpecialityServiceMap extends AbstractMapService <Speciality,Long> implements SpecialitiesService {
+public class SpecialityServiceMap extends AbstractServiceMap<Speciality,Long> implements SpecialitiesService {
     public Speciality findById(Long id) {
         return super.findById(id);
     }

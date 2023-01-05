@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
-public class OwnerSericeMap extends AbstractMapService<Owner,Long> implements OwnerService {
+public class OwnerServiceMap extends AbstractServiceMap<Owner,Long> implements OwnerService {
 
 
     private final PetService petService;
 
 
     @Autowired
-    public OwnerSericeMap(PetService petService) {
+    public OwnerServiceMap(PetService petService) {
         this.petService = petService;
     }
 
